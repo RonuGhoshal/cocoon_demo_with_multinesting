@@ -1,7 +1,7 @@
 class CreateDoctors < ActiveRecord::Migration[5.1]
   def change
     create_table :doctors do |t|
-      t.name
+      t.string :name
       t.references :hospital
       t.timestamps
     end

@@ -1,0 +1,28 @@
+<div class="nested-fields panel panel-default doctor-panel">
+  <div class="panel-body">
+    <%= f.input :name, label: 'Doctor Name' %>
+  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <th>ID</th>
+      <th>Patient</th>
+      <th></th>
+    </thead>
+    <tbody class="appointments-table">
+      <%= f.simple_fields_for :appointments do |appointment| %>
+        <%= render 'appointments/fields', f: appointment %>
+      <% end %>
+    </tbody>
+  </table>
+  <%=
+    link_to_add_association 'Add Patient', f, :appointments,
+      class: 'btn btn-primary btn-sm',
+      html: { style: 'padding: 12px;' },
+      partial: 'appointments/fields',
+      :"data-association-insertion-method" => 'append',
+      :"data-association-insertion-node" => 'table',
+      :"data-association-insertion-traversal" => 'prev'
+  %>
+  <%= link_to_remove_association 'Remove Doctor from Hospital', f, class: 'btn btn-danger btn-sm' %>
+
+</div>

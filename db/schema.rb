@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20180124193401) do
   end
 
   create_table "doctors", force: :cascade do |t|
+    t.string "name"
     t.bigint "hospital_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,11 +33,13 @@ ActiveRecord::Schema.define(version: 20180124193401) do
   end
 
   create_table "hospitals", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "patients", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

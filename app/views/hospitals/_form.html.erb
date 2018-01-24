@@ -1,0 +1,38 @@
+<%= simple_form_for(@hospital) do |f| %>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Info</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-inputs">
+        <%= f.input :name %>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Doctors</h3>
+    </div>
+    <div class="panel-body">
+
+     <div id="hospitals_doctors">
+       <%= f.simple_fields_for :doctors do |doctor| %>
+         <%= render 'doctors/fields', f: doctor %>
+       <% end %>
+     </div>
+     <%=
+      link_to_add_association 'Add Doctor', f, :doctors,
+        class: 'btn btn-primary btn-sm',
+        partial: 'doctors/fields',
+        :"data-association-insertion-node" => '#hospitals_doctors',
+        :"data-association-insertion-method" => 'append'
+     %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

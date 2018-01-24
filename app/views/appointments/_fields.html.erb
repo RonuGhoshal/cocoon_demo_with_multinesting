@@ -1,0 +1,10 @@
+<tr class="nested-fields form-inline form-table-row">
+  <td>
+    <%= f.simple_fields_for :patient do |p| %>
+      <%= p.input :name, label: false %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to_remove_association '×', f, class: 'btn btn-danger btn-xs' %>
+  </td>
+</tr>
